@@ -12,9 +12,9 @@ def get_int_in_range(string, start=0, stop=50):
 
     while True:
         try:
-            num = raw_input(string)
-            if int(num) in range(start, stop + 1):
-                return int(num)
+            num = int(raw_input(string))
+            if num >= start and num <= stop:
+                return num
             else:
                 print "Invalid repsponse - (int out of bounds). Try again."
         except ValueError:

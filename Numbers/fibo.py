@@ -5,23 +5,34 @@ A module containing fibonacci sequence operations.
 by Giovanni Prinzivalli
 """
 from numHelp import get_int_in_range
+from sys import maxint
+
+RANGE_MAX = 100000
 
 def fibonacci(n):
     """Returns the first n digits of the fibonacci sequence as a list."""
-    seq = []
-    if n == 1:
-        seq.append(0)
-    elif n == 2:
-        seq.append(0)
+    seq = [0]
+
+    if n >= 2:
         seq.append(1)
-    for i in range(3, n):
-        seq.append(seq[i-1] + seq[i-2])
+    if n >= 3:
+        for i in range(2, n + 1):
+            seq.append(seq[i-1] + seq[i-2])
 
     return seq
 
 def find_n_in_fibo(number):
     """Returns a fibonacci sequence up to n or the next digit greater than n as a list"""
-    return number
+    if number == 0:
+        return [0]
+
+    seq = [0, 1]
+    i = 1
+    while seq[i] < number:
+        seq.append(seq[i] + seq[i - 1])
+        i += 1
+
+    return seq
 
 if __name__ == "__main__":
     print "Fibo.py == Fibonacci sequence generator."
@@ -32,9 +43,9 @@ if __name__ == "__main__":
     if response == 1:
         num = get_int_in_range("Please select the length of "+
                                "the fibonacci sequence to be generated (max 100) -> ", 1, 100)
-        sequence = fibonacci(num)
-        print sequence
+        print fibonacci(num)
     elif response == 2:
         num = get_int_in_range("Please select the number you "+
-                               "wish to find in the fibo sequence (max 100,000) => ", 0, 100000)
+                               "wish to go to in the sequence (max %s) => " % RANGE_MAX, 0, RANGE_MAX)
         print find_n_in_fibo(num)
+        
