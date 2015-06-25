@@ -5,6 +5,7 @@ Module containing basic artihmetic functions.
 by Giovanni Prinzivalli
 """
 from numHelp import get_int_in_range
+import math
 
 def find_tile_cost(cost, width, height):
     """Calculates the total cost """
@@ -16,7 +17,17 @@ def mortgage(base, terms, apr, rate):
 
 def change_return(payment, cost):
     """Figures out the change to pay out for a given cost and payment."""
-    return 0
+    dollars = int(math.floor(payment - cost))
+    coins = int((payment - cost - dollars) * 100)
+    quarters = coins // 25
+    coins %= 25
+    dimes = coins // 10
+    coins %= 10
+    nickels = coins // 5
+    pennies = coins % 5
+    return {"Pennies": pennies, "Nickels": nickels,
+            "Dimes": dimes, "Quarters": quarters,
+            "Dollars": dollars}
 
 def bin_to_dec(binary):
     """Convets a given binary number to decimal"""
@@ -68,7 +79,11 @@ if __name__ == "__main__":
     elif response == 2:
         pass
     elif response == 3:
-        pass
+        cost = float(raw_input("Enter the cost of the item. -> "))
+        payment = float(raw_input("How much will you pay? ->"))
+        change = change_return(payment, cost)
+        for value in change:
+            print "%s %s" % (change[value], value)
     elif response == 4:
         print bin_to_dec(raw_input("Enter the binary number you wish to convert. -> "))
     elif response == 5:
