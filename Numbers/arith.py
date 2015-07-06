@@ -69,7 +69,8 @@ if __name__ == "__main__":
     print "5) Convert an integer from decimal to binary."
     print "6) Find the distance between two cities."
     print "7) Validate a credit card number."
-    response = get_int_in_range("Please make a selection -> ", 1, 7)
+    print "8) Calculate the cost of something after tax is applied."
+    response = get_int_in_range("Please make a selection -> ", 1, 8)
 
     if response == 1:
         cost = float(raw_input("Enter the cost per square foot of tile. -> "))
@@ -92,3 +93,5 @@ if __name__ == "__main__":
         pass
     elif response == 7:
         print validate_cc(raw_input("Enter the credit card number you wish to validate. -> "))
+    elif response == 8:
+        pass
