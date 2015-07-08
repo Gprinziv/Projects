@@ -39,10 +39,11 @@ def find_dist(pair):
     return sqrt(dist)
 
 if __name__ == "__main__":
-    print "closestPair.py testing. I got lazy on actually trying this."
-    point_a = (0, 0)
-    point_b = (4, 4)
-    point_c = (3, 4)
-    point_d = (2, 2)
-
-    print closest_pair([point_a, point_b, point_c, point_d])
+    from random import randint
+    print "Generating coordinate points..."
+    points = []
+    for pair in range(10):
+        points.append((randint(-25, 25), randint(-25,25), randint(-25,25)))
+    print points
+    print "Finding closest pair..."
+    print closest_pair(points)
