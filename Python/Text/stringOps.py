@@ -24,6 +24,10 @@ def pig_latin(text):
     """Later."""
     pass
 
+def count_vowels(text):
+    """Counts the number of vowels used in a string. Reports by vowel."""
+    pass
+
 def is_palindrome(text):
     """Checks if a string reads the same both ways"""
     return text.lower() == text[::-1].lower()
